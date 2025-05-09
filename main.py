@@ -1,6 +1,7 @@
 import dash
 from dash import html, dash_table  # ✅ Updated import
 import pandas as pd
+import os  # ✅ Import os module to get the port from environment variables
 
 # Sample data
 data = {
@@ -24,6 +25,9 @@ app.layout = html.Div([
     )
 ])
 
+# Get the port from environment variable or default to 10000 if not set
+port = int(os.environ.get("PORT", 10000))  # Default to 10000 if PORT is not set
+
 # Run app
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=True)  # ✅ Corrected `app.run_server`
