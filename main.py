@@ -1,7 +1,7 @@
 import dash
-from dash import html, dash_table
+from dash import html, dash_table  # ✅ Updated import
 import pandas as pd
-import os
+import os  # Import os module to handle environment variables
 
 # Sample data
 data = {
@@ -25,9 +25,8 @@ app.layout = html.Div([
     )
 ])
 
-# Get the port from environment variable for Render
-port = os.environ.get('PORT', 8080)
-
-# Run the app
+# Run app
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=int(port), debug=True)
+    # Use PORT environment variable (Render sets this automatically)
+    port = int(os.environ.get("PORT", 8050))  # Default to 8050 if PORT not set
+    app.run(host="0.0.0.0", port=port, debug=True)
